@@ -25,7 +25,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+        }}
+        className={`h-[50px] bg-header-light dark:bg-header-dark`}
+      >
         <h1 className={`font-bold text-2xl`}>ここはヘッダー</h1>
 
         <button
@@ -37,9 +44,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         >
           {isDarkMode ? (
-            <SunIcon className="w-[80%] h-[80%] align-none inline" />
+            <SunIcon className="w-[60%] h-[60%] align-none inline" />
           ) : (
-            <MoonIcon className="w-[80%] h-[80%] align-none inline" />
+            <MoonIcon className="w-[60%] h-[60%] align-none inline" />
           )}
         </button>
       </header>
