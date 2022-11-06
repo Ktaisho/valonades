@@ -13,10 +13,15 @@ export default function Custom404(props: Page404Props) {
   console.log("em: ", err_msg)
 
   return (
-    <div>
-      <h1>404 - Page Not Found</h1>
+    <div className={[`ml-[30px] mr-[30px]`].join(" ")}>
+      <div className={[`mb-[20px]`].join(" ")}>
+        <h1 className={[`text-[30px]`, `font-bold`].join(" ")}>
+          404 - Page Not Found
+        </h1>
+        <p>※ 存在しないページです。</p>
+      </div>
 
-      {err_msg ? <p>{err_msg}</p> : <p></p>}
+      {err_msg ? <p>エラーメッセージ: {err_msg}</p> : <p></p>}
     </div>
   )
 }
