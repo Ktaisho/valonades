@@ -1,31 +1,40 @@
+import classNames from "classnames"
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { Characters, CharacterType } from "@/base/characters"
-import { Maps } from "@/base/maps"
+import { Maps, MapType } from "@/base/maps"
 
 const MapDetail: NextPage = () => {
   const router = useRouter()
 
-  const [mapId, setMapId] = useState<string>("")
-  const [selectedCharacter, setCharcter] = useState<CharacterType | null>(null)
+  const [map, setMap] = useState<MapType | null>(null)
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<CharacterType | null>(null)
 
+  /**
+   * 初期化処理
+   */
   const fetchData = () => {
     const { id } = router.query
 
-    const mapid = Maps.find((map) => map.id === id)
+    const map = Maps.find((map) => map.id === id)
 
-    if (mapid) {
-      setMapId(mapid.id)
+    if (map) {
+      setMap(map)
     }
   }
 
+  /**
+   * キャラクターの指定
+   * @param characterId
+   */
   const selectCharacter = (characterId: string) => {
     const character = Characters.find((c) => c.id === characterId)
     if (character === undefined) {
       console.log("You selected an undefined character.")
     } else {
-      setCharcter(character)
+      setSelectedCharacter(character)
     }
   }
 
@@ -33,60 +42,112 @@ const MapDetail: NextPage = () => {
     fetchData()
   }, [router.query])
 
+  // 以下CSSスタイル用
+  const skillCellStyle = [
+    `w-[40px]`,
+    `h-[40px]`,
+    `flex item-center`,
+    `justify-center`,
+    `cursor-pointer`,
+    `rounded-[20%]`,
+    `border-[1px]`,
+  ]
+
   return (
-    <div className={[`w-[100%]`, `flex`, `flex-col md:flex-row`].join(" ")}>
-      {/* <h2 className="text-2xl font-bold">Map ID: {mapId}</h2> */}
-      <div className={[`md:order-1`].join(" ")}>
-        <p>Abilities </p>
-        <div>
-          {selectedCharacter ? (
-            Object.entries(selectedCharacter.skills).map(([n, ability]) => {
-              return <div key={n}>{ability.name}</div>
-            })
-          ) : (
-            <div></div>
-          )}
-        </div>
-      </div>
+    <>
+      <h2
+        className={classNames(
+          [`mb-[10px]`, `mr-[20px]`, `ml-[20px]`],
+          [`text-2xl`, `font-bold`, `cursor-default`],
+        )}
+      >
+        マップ名: {map ? map.name : ""}
+      </h2>
 
       <div
         className={[
-          `min-w-[800px]`,
-          `h-[600px]`,
-          `md:mr-[2px]`,
-          `order-1 md:order-2`,
+          `w-[100%]`,
+          `flex`,
+          `flex-col md:flex-row`,
+          `pr-[2px] pl-[2px]`,
         ].join(" ")}
       >
-        {/*  */}
-      </div>
+        <div
+          className={classNames([
+            `order-2`,
+            `md:order-1`,
+            `ml-[4px]`,
+            `mr-[4px]`,
+          ])}
+        >
+          {/* スキル選択欄 */}
+          <p>Abilities </p>
 
-      <div className={[`md:order-3`].join(" ")}>
-        <p>Characters</p>
-        <div className={[`w-[100%]`, `flex`, `flex-wrap`].join(" ")}>
-          {
-            // キャラ選択リスト
-            Characters.map((character) => {
+          <div className={classNames([`flex`, `flex-col`])}>
+            {selectedCharacter
+              ? Object.entries(selectedCharacter.skills).map(([n, ability]) => {
+                  return (
+                    <div key={n} className={classNames(...skillCellStyle)}>
+                      <p className={classNames([`m-[auto]`])}>{ability.name}</p>
+                    </div>
+                  )
+                })
+              : [1, 2, 3].map((n) => {
+                  return (
+                    <div key={n} className={classNames(...skillCellStyle)}>
+                      <p className={classNames([`m-[auto]`])}>{n}</p>
+                    </div>
+                  )
+                })}
+          </div>
+        </div>
+
+        <div
+          className={classNames([
+            `min-w-[800px]`,
+            `h-[600px]`,
+            `md:mr-[2px]`,
+            `order-1 md:order-2`,
+          ])}
+        >
+          {/* ここにマップコンポーネント */}
+          <p>map</p>
+        </div>
+
+        <div
+          className={classNames([`order-3`, `md:order-3`, `md:max-w-[280px]`])}
+        >
+          {/* キャラ選択欄 */}
+          <p>Characters</p>
+          <div className={classNames([`w-[100%]`, `flex`, `flex-wrap`])}>
+            {Characters.map((character) => {
               return (
                 <div
                   key={character.id}
-                  className={[
-                    `w-[40px]`,
-                    `h-[40px]`,
-                    `bg-gray-300`,
-                    `rounded-[50%]`,
-                    `cursor-pointer`,
-                  ].join(" ")}
+                  className={classNames(
+                    [`w-[42px]`, `h-[42px]`],
+                    [
+                      `bg-gray-300`,
+                      `rounded-[50%]`,
+                      `cursor-pointer`,
+                      `flex`,
+                      `items-center`,
+                      `justify-center`,
+                      `m-[2px]`,
+                    ],
+                  )}
                   onClick={() => selectCharacter(character.id)}
                 >
-                  {character.name[0]}
-                  {/* {character.name} */}
+                  <p className={classNames([`text-black`, `dark:text-black`])}>
+                    {character.name[0]}
+                  </p>
                 </div>
               )
-            })
-          }
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
