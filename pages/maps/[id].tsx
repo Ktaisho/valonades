@@ -4,13 +4,15 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { Characters, CharacterType } from "@/base/characters"
 import { Maps, MapType } from "@/base/maps"
+import MapComponent from "@/components/MapCompoenet"
 
 const MapDetail: NextPage = () => {
   const router = useRouter()
 
   const [map, setMap] = useState<MapType | null>(null)
-  const [selectedCharacter, setSelectedCharacter] =
-    useState<CharacterType | null>(null)
+  const [selectedCharacter, setSelectedCharacter] = useState<CharacterType>(
+    Characters[0],
+  )
 
   /**
    * 初期化処理
@@ -108,6 +110,7 @@ const MapDetail: NextPage = () => {
             `h-[600px]`,
             `md:mr-[2px]`,
             `order-1 md:order-2`,
+            "bg-gray-300",
           ])}
         >
           {/* ここにマップコンポーネント */}
@@ -138,9 +141,20 @@ const MapDetail: NextPage = () => {
                   )}
                   onClick={() => selectCharacter(character.id)}
                 >
-                  <p className={classNames([`text-black`, `dark:text-black`])}>
-                    {character.name[0]}
-                  </p>
+                  {character.url !== "" ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={character.url}
+                      alt={character.id + `_icon`}
+                      className={classNames(["rounded-[50%]"])}
+                    />
+                  ) : (
+                    <p
+                      className={classNames([`text-black`, `dark:text-black`])}
+                    >
+                      {character.name[0]}
+                    </p>
+                  )}
                 </div>
               )
             })}

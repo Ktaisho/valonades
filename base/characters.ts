@@ -10,6 +10,7 @@ export type CharacterType = {
   skills: {
     [key: number]: Ability
   }
+  url: string
 }
 
 export const Characters: CharacterType[] = [
@@ -30,6 +31,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/0/08/Astra_icon.png",
   },
 
   {
@@ -48,6 +50,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/5/53/Breach_icon.png",
   },
 
   {
@@ -66,6 +69,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/4/4d/Brimstone_icon.png",
   },
 
   {
@@ -84,6 +88,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/0/09/Chamber_icon.png",
   },
 
   {
@@ -102,6 +107,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/8/88/Cypher_icon.png",
   },
 
   {
@@ -120,6 +126,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/a/a6/Fade_icon.png",
   },
 
   {
@@ -138,6 +145,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/f/f3/Harbor_icon.png",
   },
 
   {
@@ -156,6 +164,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/3/35/Jett_icon.png",
   },
 
   {
@@ -174,6 +183,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/f/f0/KAYO_icon.png",
   },
 
   {
@@ -192,6 +202,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/1/15/Killjoy_icon.png",
   },
 
   {
@@ -210,6 +221,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/d/d0/Neon_icon.png",
   },
 
   {
@@ -228,6 +240,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/b/b0/Omen_icon.png",
   },
 
   {
@@ -246,6 +259,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/1/14/Phoenix_icon.png",
   },
 
   {
@@ -264,6 +278,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/9/9c/Raze_icon.png",
   },
 
   {
@@ -282,6 +297,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/b/b0/Reyna_icon.png",
   },
 
   {
@@ -300,6 +316,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/7/74/Sage_icon.png",
   },
 
   {
@@ -318,6 +335,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/3/33/Skye_icon.png",
   },
 
   {
@@ -336,6 +354,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/4/49/Sova_icon.png",
   },
 
   {
@@ -354,6 +373,7 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/5/5f/Viper_icon.png",
   },
 
   {
@@ -372,5 +392,6 @@ export const Characters: CharacterType[] = [
         name: "abi3",
       },
     },
+    url: "https://static.wikia.nocookie.net/valorant/images/d/d4/Yoru_icon.png",
   },
 ]
