@@ -46,8 +46,8 @@ const MapDetail: NextPage = () => {
 
   // 以下CSSスタイル用
   const skillCellStyle = [
-    `w-[40px]`,
-    `h-[40px]`,
+    `w-[50px]`,
+    `h-[50px]`,
     `flex item-center`,
     `justify-center`,
     `cursor-pointer`,
@@ -75,22 +75,49 @@ const MapDetail: NextPage = () => {
         ].join(" ")}
       >
         <div
-          className={classNames([
-            `order-2`,
-            `md:order-1`,
-            `ml-[4px]`,
-            `mr-[4px]`,
-          ])}
+          className={classNames(
+            [`order-2`, `md:order-1`, `ml-[4px]`, `mr-[4px]`],
+            [`w-[100px]`],
+          )}
         >
           {/* スキル選択欄 */}
-          <p>Abilities </p>
+          <p
+            className={classNames(
+              [`w-[fit-content]`, `mx-[auto]`],
+              [`font-bold`],
+            )}
+          >
+            Abilities{" "}
+          </p>
 
           <div className={classNames([`flex`, `flex-col`])}>
             {selectedCharacter
               ? Object.entries(selectedCharacter.skills).map(([n, ability]) => {
                   return (
-                    <div key={n} className={classNames(...skillCellStyle)}>
-                      <p className={classNames([`m-[auto]`])}>{ability.name}</p>
+                    <div
+                      key={n}
+                      className={classNames(...skillCellStyle, [
+                        `my-[5px]`,
+                        `mx-[auto]`,
+                      ])}
+                    >
+                      {ability.icon !== "" && ability.icon ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={ability.icon}
+                          alt={`a_${n}_icon`}
+                          className={classNames(
+                            skillCellStyle,
+                            [`hover:opacity-80`],
+                            `bg-theme-color`,
+                          )}
+                          title={ability.name}
+                        />
+                      ) : (
+                        <p className={classNames([`m-[auto]`])}>
+                          {ability.name}
+                        </p>
+                      )}
                     </div>
                   )
                 })
@@ -113,8 +140,7 @@ const MapDetail: NextPage = () => {
             "bg-gray-300",
           ])}
         >
-          {/* ここにマップコンポーネント */}
-          <p>map</p>
+          <MapComponent />
         </div>
 
         <div

@@ -1,5 +1,6 @@
 type Ability = {
   name: string
+  icon?: string
 }
 
 export type CharacterType = {
@@ -22,13 +23,16 @@ export const Characters: CharacterType[] = [
     release: 2.04,
     skills: {
       1: {
-        name: "abi1",
+        name: "GRAVITY WELL",
+        icon: "https://static.wikia.nocookie.net/valorant/images/4/41/Gravity_Well.png",
       },
       2: {
-        name: "abi2",
+        name: "NOVA PULSE",
+        icon: "https://static.wikia.nocookie.net/valorant/images/5/51/Nova_Pulse.png",
       },
       3: {
-        name: "abi3",
+        name: "NEBULA / DISSIPATE",
+        icon: "https://static.wikia.nocookie.net/valorant/images/8/8b/Nebula_-_Dissipate.png",
       },
     },
     url: "https://static.wikia.nocookie.net/valorant/images/0/08/Astra_icon.png",
