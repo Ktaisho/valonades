@@ -6,8 +6,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        header: {
+          dark: "#32332c",
+          light: "#ffffff",
+        },
+        "theme-color": {
+          dark: "#ff4b50",
+          light: "#ff4b50",
+          DEFAULT: "#ff4b50",
+        },
+      },
     },
   },
   plugins: [],
+  darkMode: "class",
 }
